@@ -2,7 +2,6 @@ from __future__ import print_function
 import argparse
 import os
 from math import log10
-import copy
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -12,14 +11,13 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 import torch.backends.cudnn as cudnn
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 
 from networks import define_G, define_D, GANLoss, get_scheduler, update_learning_rate, padding
 from data import get_training_set, get_test_set
 
 from tqdm import tqdm
 import time
-import datetime
 
 # Training settings
 parser = argparse.ArgumentParser(description='class-conditioned-ODI-generator-pytorch')
@@ -100,13 +98,13 @@ def main():
 	D_loss_array = []
 	epoch_array = []
 
-	for epoch in tqdm(range(opt.epoch_count, opt.niter + opt.niter_decay + 1)):
+	for epoch in tqdm(range(opt.epoch_count, opt.niter + opt.niter_decay + 1), desc="Epoch"):
 		# train
 		loss_g_sum = 0
 		loss_d_sum = 0
-		for iteration, batch in enumerate(tqdm(training_data_loader), 1):
+		for iteration, batch in enumerate(tqdm(training_data_loader, desc="Batch"), 1):
 			# forward
-			real_a, real_b, class_label, file_name = batch[0].to(device), batch[1].to(device), batch[2].to(device), batch[3][0]
+			real_a, real_b, class_label, _ = batch[0].to(device), batch[1].to(device), batch[2].to(device), batch[3][0]
 			fake_b = net_g(real_a, class_label)
 
 			######################
@@ -169,10 +167,9 @@ def main():
 		# test
 		avg_psnr = 0
 		dst = Image.new('RGB', (512*4, 256*4))
-		draw = ImageDraw.Draw(dst)
 		n = 0
-		for batch in tqdm(testing_data_loader):
-			input, target, class_label, test_file_name = batch[0].to(device), batch[1].to(device), batch[2].to(device), batch[3][0]
+		for batch in tqdm(testing_data_loader, desc="Batch"):
+			input, target, class_label, _ = batch[0].to(device), batch[1].to(device), batch[2].to(device), batch[3][0]
 
 			prediction = net_g(input, class_label)
 			mse = criterionMSE(prediction, target)

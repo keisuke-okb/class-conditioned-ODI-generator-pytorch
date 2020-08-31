@@ -1,16 +1,13 @@
 from os import listdir
 from os.path import join
-import random
 
 from PIL import Image
 import torch
 import torch.utils.data as data
 import torchvision.transforms as transforms
 
-from utils import is_image_file, load_img
+from utils import is_image_file
 import re
-import numpy as np
-
 
 class DatasetFromFolder(data.Dataset):
 	def __init__(self, image_dir, direction):

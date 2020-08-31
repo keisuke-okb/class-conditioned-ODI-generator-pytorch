@@ -1,19 +1,14 @@
 import torch
 import torch.nn as nn
-from torch.nn import init
 import functools
 from torch.optim import lr_scheduler
 import torch.nn.functional as F
-from torch.nn.parameter import Parameter
-import numpy as np
 
 def get_norm_layer(norm_type='instance'):
 	if norm_type == 'batch':
 		norm_layer = functools.partial(nn.BatchNorm2d, affine=True)
 	elif norm_type == 'instance':
 		norm_layer = functools.partial(nn.InstanceNorm2d, affine=False, track_running_stats=False)
-	elif norm_type == 'switchable':
-		norm_layer = SwitchNorm2d
 	elif norm_type == 'none':
 		norm_layer = None
 	else:
