@@ -7,8 +7,8 @@ Simple PyTorch implementation of class-conditioned ODI generator based on [pix2p
 
 ![concept](https://user-images.githubusercontent.com/70097451/91708069-bf5a4f80-ebbb-11ea-9a62-45784a3d6af6.jpg)
 
-## Class-conditioned generator
-
+## Outline of ODI generation system with class-conditioned generator
+![method_class_conditioned_v3](https://user-images.githubusercontent.com/70097451/91708633-8d95b880-ebbc-11ea-9545-724c96fd73c4.jpg)
 
 
 
