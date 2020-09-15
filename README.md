@@ -22,6 +22,22 @@ Simple PyTorch implementation of class-conditioned ODI generator based on [pix2p
 + Clone or download this repository.
 + Download [sample dataset](https://drive.google.com/file/d/1L-u-8xUg-S9KnL_7ZAJcW44pws9VHvpJ/view?usp=sharing)(Google Drive).
 + Unzip the zip file and place the `dataset` folder in the same location as the `implementation` folder.
+
+```
+class-conditioned-ODI-generator-pytorch/
+  +- implementation/
+  |    +- train.py
+  |    +- networks.py
+  |    +- ...
+  +- dataset/
+       +- train/
+       |    +- base/
+       |    +- label/
+       +- test/
+            +- base/
+            +- label/
+```
+
 + Move to the implementation directory: `cd implementation`
 
 ### Run
