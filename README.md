@@ -42,7 +42,7 @@ python train.py
 + `--niter_decay <int>`: # of iter to linearly decay learning rate to zero. Default: 0
 
 + `--g_ch <int>`: Generator channels in first conv layer. Default: 128
-+ `--D_ch <int>`: Discriminator channels in first conv layer. Default: 128
++ `--d_ch <int>`: Discriminator channels in first conv layer. Default: 128
 + `--save_interval <int>`: Interval epoch of network weight saving. Default: 10
 + `--graph_save_while_training`: If save current loss graph while training. Default: False
 
