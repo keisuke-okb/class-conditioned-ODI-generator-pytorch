@@ -2,7 +2,7 @@
 
 Simple PyTorch implementation of class-conditioned ODI generator based on [pix2pix](https://phillipi.github.io/pix2pix/)(cGAN).
 
-**Paper: [Omni-Directional Image Generation from Single Snapshot Image]() by Keisuke Okubo and Takao Yamanaka.**
+**Paper(arXiv): [Omni-Directional Image Generation from Single Snapshot Image](https://arxiv.org/abs/2010.05600) by Keisuke Okubo and Takao Yamanaka.**
 
 
 ![concept](https://user-images.githubusercontent.com/70097451/91708069-bf5a4f80-ebbb-11ea-9a62-45784a3d6af6.jpg)
